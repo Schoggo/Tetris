@@ -198,23 +198,26 @@ Tetro::Tetro(char c, Vec2d pos): position(pos), color(c) {
 			offsets[3][3] = Vec2d(0, 1);
 			break;
 		
-		case JTetro:
+		case JTetro://x, y
 			offsets[0][0] = Vec2d(-1, -1); 
 			offsets[0][1] = Vec2d(-1, 0); 
 			offsets[0][2] = Vec2d(0, 0); 
 			offsets[0][3] = Vec2d(1, 0);
+			
 			offsets[1][0] = Vec2d(0, -1); 
 			offsets[1][1] = Vec2d(1, -1); 
 			offsets[1][2] = Vec2d(0, 0); 
 			offsets[1][3] = Vec2d(0, 1);
+			
 			offsets[2][0] = Vec2d(-1, 0); 
 			offsets[2][1] = Vec2d(0, 0); 
 			offsets[2][2] = Vec2d(1, 0); 
 			offsets[2][3] = Vec2d(1, 1);
+			
 			offsets[3][0] = Vec2d(0, -1); 
 			offsets[3][1] = Vec2d(0, 0); 
 			offsets[3][2] = Vec2d(0, 1); 
-			offsets[3][3] = Vec2d(-1, -1);
+			offsets[3][3] = Vec2d(-1, 1);
 			break;
 	}
 	
