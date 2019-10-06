@@ -17,3 +17,4 @@ renderer.o: renderer.h renderer.cpp
 clean:
 	@echo removing object files 
 	@rm *.o
+	@rm tetris
