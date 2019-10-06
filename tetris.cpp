@@ -43,31 +43,36 @@ bool needBGRedraw(Display *disp){
 void clearLines(Board &b, int &score){
 	int cleared = 0;
 	bool full;
-	
-	//go through all lines from bottom to top
-	for(int i = tYHeight - 1; i >= 0; i--){
-		full = 1;
-		//check if line is full
-		for(int j = 0; j < tXWidth; j++){
-			if(b.board[j][i] == '_'){
-				full = 0;
-				break;
-			}
-		}
-		//if line is full increment cleared lines
-		if(full){
-			cleared++;
-			/*
+	bool foundOne = true;
+	while(foundOne){
+		foundOne = false;
+		//go through all lines from bottom to top
+		for(int i = tYHeight - 1; i >= 0; i--){
+			full = 1;
+			//check if line is full
 			for(int j = 0; j < tXWidth; j++){
-				b.board[j][i] = '_';
+				if(b.board[j][i] == '_'){
+					full = 0;
+					break;
+				}
 			}
-			*/
-			//go through all lines above the full line
-			for(int j = i - 1; j >= 0; j--){
-				//and push them one donw
-				for(int k = 0; k < tXWidth; k++){
-					cout << b.board[k][j + 1] << " becomes " << b.board[k][j] <<endl;
-					b.board[k][j + 1] = b.board[k][j];
+			//if line is full increment cleared lines
+			if(full){
+				cleared++;
+				foundOne = 1;
+				/*
+				for(int j = 0; j < tXWidth; j++){
+					b.board[j][i] = '_';
+				}
+				*/
+				//go through all lines above the full line
+				for(int j = i - 1; j >= 0; j--){
+					//and push them one donw
+					for(int k = 0; k < tXWidth; k++){
+						//cout << b.board[k][j + 1] << " becomes " << b.board[k][j] <<endl;
+						b.board[k][j + 1] = b.board[k][j];
+						//b.board[k][j + 1] = '_';
+					}
 				}
 			}
 		}
@@ -157,6 +162,7 @@ int main(){
 		#endif
 		#if 1
 		if(needBoardRender){
+			rend::renderBase(gs);
 			rend::renderBoard(board, gs);
 			needBoardRender = 0;
 		}
