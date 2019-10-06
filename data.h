@@ -2,6 +2,7 @@
 #define tetrisdata
 
 #include <iostream>
+#include <X11/keysymdef.h>
 
 #define tEMPTY '_'
 #define tRED 'a'
@@ -54,7 +55,7 @@ class Tetro{
 		Vec2d position;
 		 Vec2d offsets[4][4];
 		int rotation;
-		const char color;
+		 char color;
 		
 	public:
 		//bool success
@@ -83,114 +84,9 @@ class Tetro{
 bool checkCollisions(const Board &b, const Vec2d pos[4]);
 
 
-
-
-
-
-
-
-/*
-class OTetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tYELLOW;
-		OTetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-
-class TTetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tPINK;
-		TTetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-
-class ITetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tLBLUE;
-		ITetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-
-class JTetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tDBLUE;
-		JTetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-
-class LTetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tORANGE;
-		LTetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-
-class STetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tGREEN;
-		STetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-
-class ZTetro: public Tetro{
-	public:
-		static const Vec2d offsets[4][4];
-		static const char color = tRED;
-		ZTetro(const Vec2d &pos){position = pos; rotation = 0;}
-		char getColor() const {return this->color;}
-		void getPos(Vec2d pos[4]) const;
-		void getRTurn(Vec2d pos[4], const Tetro*) const;
-		void getLTurn(Vec2d pos[4], const Tetro*) const;
-		bool tryRTurn(const Board&, Tetro*);
-		bool tryLTurn(const Board&, Tetro*);
-		virtual  Vec2d** getOffsets() const;
-};
-*/
-
 struct ControlScheme{
 	public:
+	
 		unsigned int mvL;
 		unsigned int mvR;
 		unsigned int mvD;

@@ -31,10 +31,41 @@ ostream& operator<<(ostream &os, const Vec2d &v){
 }
 /////////////////////////////////////////////////////////
 
-//TODO dürfte memory leaken
 bool Board::trySpawnNewTet(Tetro **t) const {
-	Vec2d spawnPos = Vec2d(4, 4);
+	Vec2d spawnPos = Vec2d(4, 2);
 	
+//if bag generator
+#if 1
+	static int index = 0;
+	static Tetro bag[7] = {Tetro('a', spawnPos), Tetro('a', spawnPos),
+	Tetro('a', spawnPos), Tetro('a', spawnPos), Tetro('a', spawnPos),
+	Tetro('a', spawnPos), Tetro('a', spawnPos)};
+	
+	//generate new bag
+	if(!index){
+		//fill up array
+		cout <<"filling"<<endl;
+		for(int i = 0; i < 7; i++){
+			bag[i] = Tetro(i + 'a', spawnPos);
+		}
+		
+		//and shuffle it (Fisher-Yates)
+		cout <<"shuffling"<<endl;
+		Tetro buf = Tetro('a', spawnPos);
+		int random;
+		for(int i = 6; i > 0; i--){
+			random = rand() % (i + 1);
+			buf = bag[random];
+			bag[random] = bag[i];
+			bag[i] = buf;
+		}
+	}
+	cout <<"assigning"<<endl;
+	*t = &bag[index];
+	index ++;
+	index %= 7;
+
+#else
 	if(*t ){
 		delete *t;
 	}
@@ -42,6 +73,7 @@ bool Board::trySpawnNewTet(Tetro **t) const {
 	Tetro *tet = new Tetro(rand() % 7 + 'a', spawnPos);
 	*t = tet;
 	
+#endif
 	Vec2d pos[4];
 	(*t)->getPos(pos);
 	return ! checkCollisions(*this, pos);

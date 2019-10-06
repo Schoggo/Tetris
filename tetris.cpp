@@ -91,7 +91,6 @@ int main(){
 	//board.board[1][1] = tRED;
 	Tetro *currT = NULL;
 	board.trySpawnNewTet(&currT);
-	
 	rend::GraphicsState gs = rend::GraphicsState();
 	rend::initRender(board, currT, gs);
 	rend::renderBase(gs);
